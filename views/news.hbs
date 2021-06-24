@@ -1,0 +1,29 @@
+<header>
+  <h1>
+    Welcome to the news channel
+  </h1>
+  <div class="navbar">
+    <a href="/category">
+      Вернуться на страницу категорий
+    </a>
+  </div>
+</header>
+
+<div class="content">
+  {{#each news}}
+    <h1>
+      {{title}}
+    </h1>
+    <p>
+      {{text}}
+    </p>
+    <p>
+      {{author}}
+    </p>
+  {{/each}}
+</div>
+<div class="comment">
+  {{#each comment}}
+      {{authorName}}
+    {{/each}}
+</div>

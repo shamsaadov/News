@@ -1,0 +1,52 @@
+body {
+  background-image: url("https://habrastorage.org/webt/y7/rx/av/y7rxavmwlct3n-bqq-fshqjv_ig.jpeg");
+  margin: 0;
+}
+.main{
+  width: 800px;
+  margin: auto;
+}
+header h1 {
+  margin: auto;
+  text-align: center;
+  padding: 50px 0;
+  color: white;
+}
+header a {
+  color: white;
+  font-size: 25px;
+}
+.navbar{
+  text-align: center;
+  padding-bottom: 25px;
+}
+header{
+  background-color: blue;
+  opacity: 0.7;
+ position: sticky;
+  top: 1px;
+}
+.comment{
+  color: white;
+}
+.content{
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  padding: 15px 0;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+.ssilki{
+  margin-top: 25px;
+}
+.infoNews{
+  color: white;
+}
+img{
+  width: 100%;
+  border-radius: 10px;
+}
