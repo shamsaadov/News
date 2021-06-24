@@ -1,0 +1,54 @@
+<header>
+  <h1>
+    Welcome to the news channel
+  </h1>
+  <div class="navbar">
+    <a href="/">
+      Вернуться на страницу c категориями
+    </a>
+  </div>
+</header>
+
+
+
+<div class="title-news">
+  <h1>
+    {{post.title}}
+  </h1>
+  <p class="text-news">
+    {{post.text}}
+  </p>
+  <p class="author-text">
+    ©{{post.author}}
+  </p>
+</div>
+
+
+
+<hr>
+{{#each comment}}
+<div class="comment">
+  <p class="comment-author">
+    {{authorName}}:
+  </p>
+  <p class="comment-text">
+    {{text}}
+  </p>
+</div>
+{{/each}}
+
+<div class="form">
+  <form action="/comment/{{post._id}}" method="POST">
+
+    <p><input type="text" name="authorName" placeholder="Введите ваше имя" class="input"></p>
+
+    <p><input type="text" name="text" placeholder="Введите комментарий" class="input"></p>
+
+    <p><button type="submit" class="btn">
+           <span>
+             Отправить
+           </span>
+    </button></p>
+
+  </form>
+</div>

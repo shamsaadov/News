@@ -1,17 +1,31 @@
 const News = require("../models/News");
-
+const Comment = require("../models/Comment");
 const getNews = async (req, res) => {
   const news = await News.find();
   res.render("news", {
     newsItem: news,
   });
 };
-const getNewsId = async (req, res) => {
-  const news = await News.findById(req.params.id).lean();
-  res.render("news", {
-    newsItem: news,
-  });
+const getNewsById = async (req, res) => {
+  try {
+    const commentList = await Comment.find({
+      newsId: req.params.id,
+    }).lean();
+    console.log(commentList);
+    const post = await News.findById(req.params.id).lean();
+
+    res.render("single-news", {
+      post: post,
+      comment: commentList
+    });
+  } catch (e) {
+    console.log(e.message)
+  }
 };
+// const news = await News.findById(req.params.id).lean();
+//   res.render("news", {
+//     newsItem: news,
+//   });
 const getCatNews = async (req, res) => {
   try {
     const news = await News.findById(req.params.id);
@@ -28,7 +42,7 @@ const postNews = async (req, res) => {
       title: req.body.title,
       text: req.body.text,
       author: req.body.author,
-      categoriesId: req.params.id,
+      category: req.params.id,
     });
     news.save();
     res.json("Новость добавлена к категории ");
@@ -60,6 +74,6 @@ module.exports = {
   postNews,
   patchNews,
   deleteNews,
-  getNewsId,
+  getNewsById,
   getCatNews,
 };

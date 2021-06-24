@@ -12,18 +12,7 @@
 <div class="content">
   {{#each news}}
     <h1>
-      {{title}}
+      <a href="/news/{{_id}}">{{title}}</a>
     </h1>
-    <p>
-      {{text}}
-    </p>
-    <p>
-      {{author}}
-    </p>
   {{/each}}
-</div>
-<div class="comment">
-  {{#each comment}}
-      {{authorName}}
-    {{/each}}
 </div>

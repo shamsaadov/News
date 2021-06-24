@@ -15,7 +15,7 @@ const postComment = async (req, res) => {
       newsId: req.params.id,
     });
     comment.save();
-    res.json("Комментарий к новости опубликован");
+    res.redirect(`/news/${req.params.id}`)
   } catch (e) {
     console.log(e.message);
   }
@@ -34,63 +34,15 @@ const patchComment = async (req, res) => {
   }
 };
 const getCommentByNews = async (req, res) => {
-  // попытка номер 1
-  // // try {
-  // //   const comment = await Commentary.find({
-  // //     newsId: req.params.id
-  // //   }).lean()
-  // //   console.log(comment)
-  // //   res.render("news", {
-  // //     comment: comment ,
-  // //   })
-  // // }catch (e) {
-  // //   console.log(e.message)
-  // // }
-
-  //попытка номер 2
-  // try {
-  //   console.log(req.params.id)
-  //   const comment = await Commentary.aggregate([
-  //     {
-  //       $match : { newsId : req.params.id },
-  //     }
-  //     // {
-  //     //   $set: {
-  //     //     comment: 123123,
-  //     //   },
-  //     // },
-  //   ]);
-  //
-  //   res.render("news");
-  //   console.log(comment);
-
-  //попытка номер 3
-
-  // try {
-  //   const comment = await Commentary.find({
-  //     news: req.params.id,
-  //   }).lean();
-  //   const post = await News.findById(req.params.id).lean();
-  //   const puzzle = { post: post, comment: comment };
-  //   res.render("post", puzzle);
-  // } catch (e) {
-  //   console.log(e.message);
-  // }
-
-  //попытка номер 4
-
   try {
-    const news = await News.aggregate([
-      {
-        $lookup: {
-          from: 'comments',
-          localField: '_id',
-          fo
-        }
-      }
-    ])
-  }catch (e) {
-    console.log(e.message)
+    const comment = await Commentary.find({
+      news: req.params.id,
+    }).lean();
+    const post = await News.findById(req.params.id).lean();
+    const puzzle = { post: post, comment: comment };
+    res.render("post", puzzle);
+  } catch (e) {
+    console.log(e.message);
   }
 };
 

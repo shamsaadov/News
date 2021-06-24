@@ -16,7 +16,7 @@ router.get("/category", (req, res) => {
 router.get("/categories/:id/news", (req, res) => {
   res.render("news");
 });
-router.get('/news/:id/comment', (req, res) => {
-  res.render('news')
-})
+router.get("/news/:id/comment", (req, res) => {
+  res.render("news");
+});
 module.exports = router;

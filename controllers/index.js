@@ -11,7 +11,7 @@ const {
   postNews,
   patchNews,
   deleteNews,
-  getNewsId,
+  getNewsById,
   getCatNews,
 } = require("./News");
 
@@ -20,7 +20,7 @@ const {
   patchComment,
   postComment,
   deleteComment,
-  getCommentByNews
+  getCommentByNews,
 } = require("./commentary");
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
   postComment,
   deleteComment,
   getNewsByCategory,
-  getNewsId,
+  getNewsById,
   getCatNews,
-  getCommentByNews
+  getCommentByNews,
 };
